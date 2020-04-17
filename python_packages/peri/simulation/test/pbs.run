@@ -1,0 +1,22 @@
+#!/bin/sh
+#PBS -N test1
+#PBS -P civil
+#PBS -m bea
+#PBS -M $USER@iitd.ac.in
+#PBS -l select=1:ncpus=12:mpiprocs=12
+#PBS -l walltime=03:30:00
+#PBS -r n
+export OMP_NUM_THREADS=1
+
+module load apps/peridigm/1.4.0/gnu
+
+# After job starts, must goto working directory.
+# $PBS_O_WORKDIR is the directory from where the job is fired.
+echo "==============================="
+echo $PBS_JOBID
+cat $PBS_NODEFILE
+echo "==============================="
+cd $PBS_O_WORKDIR
+
+#Command to execute LAMMPS on cpu nodes
+time -p mpirun -n 12 Peridigm Bar1.peridigm

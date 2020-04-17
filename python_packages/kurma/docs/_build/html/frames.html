@@ -1,0 +1,258 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>frames module &mdash; Kurma 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="lmps package" href="lmps.html" />
+    <link rel="prev" title="data module" href="data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Kurma
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">kurma</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="data.html">data module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">frames module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lmps.html">lmps package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logo.html">logo module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="structure_order.html">structure_order package</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Kurma</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="modules.html">kurma</a> &raquo;</li>
+        
+      <li>frames module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/frames.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-frames">
+<span id="frames-module"></span><h1>frames module<a class="headerlink" href="#module-frames" title="Permalink to this headline">¶</a></h1>
+<p>Get frames from lammps trajectory file.
+Dependency:
+numpy
+pandas
+math
+misc.file_len</p>
+<dl class="function">
+<dt id="frames.get_box">
+<code class="sig-prename descclassname">frames.</code><code class="sig-name descname">get_box</code><span class="sig-paren">(</span><em class="sig-param">inpf</em>, <em class="sig-param">fn</em>, <em class="sig-param">natoms</em><span class="sig-paren">)</span><a class="headerlink" href="#frames.get_box" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get box from lammps traj file.</p>
+<p>inpf   : Input file name, [String] (format: id, atom type, xs, ys, zs)
+fn     : Frame number, [int]
+natoms : Number of atoms, [int]</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="frames.get_frame_headers">
+<code class="sig-prename descclassname">frames.</code><code class="sig-name descname">get_frame_headers</code><span class="sig-paren">(</span><em class="sig-param">inpf</em><span class="sig-paren">)</span><a class="headerlink" href="#frames.get_frame_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get headers from lammps traj file.</p>
+<p>inpf   : Input file name, [String] (format: id, atom type, xs, ys, zs)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="frames.get_frame_total">
+<code class="sig-prename descclassname">frames.</code><code class="sig-name descname">get_frame_total</code><span class="sig-paren">(</span><em class="sig-param">inpf</em><span class="sig-paren">)</span><a class="headerlink" href="#frames.get_frame_total" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total number of frames in lammps traj file.</p>
+<p>inpf   : Input file name, [String] (format: id, atom type, xs, ys, zs)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="frames.get_frames">
+<code class="sig-prename descclassname">frames.</code><code class="sig-name descname">get_frames</code><span class="sig-paren">(</span><em class="sig-param">inpf, fn=[1], variable_size=False</em><span class="sig-paren">)</span><a class="headerlink" href="#frames.get_frames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get specific frame from lammps traj file.</p>
+<p>Parameters
+inpf   : Input file name, [String] (format: id, atom type, xs, ys, zs)
+fn     : List of frame number
+natoms : Number of total atoms</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="frames.get_natoms">
+<code class="sig-prename descclassname">frames.</code><code class="sig-name descname">get_natoms</code><span class="sig-paren">(</span><em class="sig-param">inpf</em><span class="sig-paren">)</span><a class="headerlink" href="#frames.get_natoms" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get natoms from lammps traj file.</p>
+<p>inpf   : Input file name, [String] (format: id, atom type, xs, ys, zs)</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lmps.html" class="btn btn-neutral float-right" title="lmps package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="data.html" class="btn btn-neutral float-left" title="data module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Ravinder Bhattoo
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
