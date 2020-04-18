@@ -14,6 +14,11 @@ from matplotlib.patches import Patch
 
 plt.savefig = partial(plt.savefig, dpi = 500,bbox_inches = "tight")
 
+def __t(x):
+    if plt.rcParams['text.usetex']:
+        return r'\textbf{{{}}}'.format(x)
+    else:
+        return x
 
 def usetex(on='on'):
     if on=='off':
@@ -75,12 +80,22 @@ def set_mood_light():
 
 
 
-def set_font(size=20,family='CMU Serif',weight='bold'):
-    plt.rcParams['font.size'] = size
-    plt.rcParams['font.family'] = family
-    plt.rcParams['font.weight'] = weight
-    plt.rcParams['axes.labelweight'] = weight
-    plt.rcParams['axes.titleweight'] = weight
+def set_font(size=20,family='Arial',weight='bold'):
+    params = {
+    'xtick.labelsize': size,
+    'ytick.labelsize': size,
+    'axes.labelsize': size,
+    'axes.titlesize': size,
+    'font.size': size,
+    'legend.title_fontsize': size,
+    'legend.fontsize': size,
+    'figure.titlesize': size,
+    'font.family': family,
+    'font.weight': weight,
+    'axes.labelweight':weight,
+    'axes.titleweight': weight,
+    }
+    plt.rcParams.update(params)
 
 
 Params_ = {'_internal.classic_mode': False,
@@ -176,7 +191,7 @@ Params_ = {'_internal.classic_mode': False,
     'date.autoformatter.second': '%H:%M:%S',
     'date.autoformatter.year': '%Y',
     'docstring.hardcopy': False,
-    'errorbar.capsize': 0.0,
+    'errorbar.capsize': 3.0,
     'figure.autolayout': False,
     'figure.constrained_layout.h_pad': 0.04167,
     'figure.constrained_layout.hspace': 0.02,
@@ -203,7 +218,7 @@ Params_ = {'_internal.classic_mode': False,
                      'Script MT',
                      'Felipa',
                      'cursive'],
-    'font.family': ['CMU Serif'],
+    'font.family': ['Arial'],
     'font.fantasy': ['Comic Sans MS',
                      'Chicago',
                      'Charcoal',
@@ -234,6 +249,7 @@ Params_ = {'_internal.classic_mode': False,
                         'Avant Garde',
                         'sans-serif'],
     'font.serif': ['DejaVu Serif',
+                   'Times New Roman',
                    'Bitstream Vera Serif',
                    'Computer Modern Roman',
                    'New Century Schoolbook',
@@ -322,7 +338,7 @@ Params_ = {'_internal.classic_mode': False,
     'markers.fillstyle': 'full',
     'mathtext.bf': 'sans:bold',
     'mathtext.cal': 'cursive',
-    'mathtext.default': 'bf',
+    'mathtext.default': 'default',
     'mathtext.fallback_to_cm': True,
     'mathtext.fontset': 'custom',
     'mathtext.it': 'sans:italic',
@@ -488,7 +504,7 @@ def panel(rows,cols, figsize=None, size=6, mx=1, my=1, l_p = 0.16, b_p=0.16,r_p 
 
     if brackets:
         for ind,i in enumerate(label):
-            labels[ind] = '({})'.format(i)
+            labels[ind] = __t('({})'.format(i))
 
     n = cols
     m = rows
@@ -545,33 +561,33 @@ def title(ttl,ax = 0,**kwargs):
     try:
         iter(ax)
         for i in zip(ttl,ax):
-            i[1].set_title(i[0],**kwargs)
+            i[1].set_title(__t(i[0]),**kwargs)
     except:
         if ax==0:
             ax = plt.gca()
-        ax.set_title(ttl,**kwargs)
+        ax.set_title(__t(ttl),**kwargs)
 
 def xlabel(label,ax = 0,**kwargs):
     global plt
     try:
         iter(ax)
         for i in zip(label,ax):
-            i[1].set_xlabel(i[0],**kwargs)
+            i[1].set_xlabel(__t(i[0]),**kwargs)
     except:
         if ax==0:
             ax = plt.gca()
-        ax.set_xlabel(label,**kwargs)
+        ax.set_xlabel(__t(label),**kwargs)
 
 def ylabel(label,ax = 0,**kwargs):
     global plt
     try:
         iter(ax)
         for i in zip(label,ax):
-            i[1].set_ylabel(i[0],**kwargs)
+            i[1].set_ylabel(__t(i[0]),**kwargs)
     except:
         if ax==0:
             ax = plt.gca()
-        ax.set_ylabel(label,**kwargs)
+        ax.set_ylabel(__t(label),**kwargs)
 
 
 def xticks(pos,ax = None,labels = None,**kwargs):
@@ -708,7 +724,7 @@ def text(x,y,text,ax=None,**kwargs):
     global plt
     if ax==None:
             ax = plt.gca()
-    return ax.text(x,y,text, **kwargs)
+    return ax.text(x,y,__t(text), **kwargs)
 
 def savefig(filename,dpi=80,**kwargs):
     global plt
